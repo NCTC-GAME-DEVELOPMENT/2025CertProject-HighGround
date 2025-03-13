@@ -1,0 +1,60 @@
+Title: Cataffliction (TBD if that is the hardset name)
+Genre: Top Down Horror Shooter
+
+Story Concept: You, the player, are a robot that has awoken in an abandoned factor. A distress signal awoke you
+	       from stasis, and you must descend the factories floors in order to find it. There are terrible
+	       creatures in the factory that will attempt to stop you as you continue. Whatever you do, do not 
+	       lose yourself to their hivemind. (Rewrite this later properly together)
+
+---------
+GAMEPLAY LOOP
+
+- GAME START:
+	+ Go through Factory Floor
+	+ Dispatch/Kill Enemies
+	+ Go to Next Floor
+	+ Repeat
+
+- Questions:
+	+ Do all enemies need to be killed in order for the player to progress to the next floor?
+	+ How many Floors/Levels are we making for this?
+
+--------
+Robot Visuals (Player): Humanoid Upper Body, Lower Body has tank treads (Like Wall-E), Scrap Aesthetic
+
+Player Movement: Camera Follows Player (Does not Rotate), Player Looks towards the mouse, TOP DOWN
+
+Player Weapons: Pistol (Projectile), Metal Pipe (Short Raycast)
+
+Enemy Visuals: Robots, Scrap Aesthetic, Hivemind/Infected Aesthetic
+
+Enemy Aggro: Trigger upon player entering the room (Think Zelda)
+
+Enemy Attack: Metal Pipe (Short Raycast) (Visually look different to the player's in some way)
+
+Floor/Level Change: Visually appears as a door that enters a stairway, Instance Loading
+
+Audio: Ambience, Weapons, Floor/Level Change, Enemy Aggro, Main Menu, Settings Open & Close, Buttons
+
+Main Menu: Have an About Section (For Credits), (REST TBD)
+
+Settings: (TBD)
+
+--------
+PRIORITY LIST:
+
+1st. Player Movement
+2nd. Player Weapons
+3rd. Enemy Aggro
+4th. Enemy Attack/Weapon
+5th. Floor/Level Change
+6th. Audio
+7th. Main Menu & Credits
+8th. Settings
+
+---------
+MAYBE / IF WE HAVE TIME:
+- Traps
+- Player Sprint
+- Ranged Enemies
+- Pick Ups (Both Ammo & Health) (Would Require Implementing a system for it)
