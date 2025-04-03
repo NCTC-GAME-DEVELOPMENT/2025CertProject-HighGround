@@ -93,7 +93,6 @@ public class InputPoller : MonoBehaviour
         {
             Vector2 Mouselocation = mouse.position.ReadValue();
             input.rightStick = (Mouselocation - ScreenCenter).normalized; 
-
         }
 
         return input;

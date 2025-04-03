@@ -36,7 +36,6 @@ public class RobotPlayerPW : MonoBehaviour
         moveVector.z = value.y;
 
         rb.linearVelocity = moveVector.normalized * MoveSpeed;
-
     }
 
     public void LookandShoot(Vector2 value)
@@ -51,7 +50,6 @@ public class RobotPlayerPW : MonoBehaviour
         lookVector.z = value.y; 
          
         gameObject.transform.forward = lookVector; 
-
     }
    
     public void Fire(bool value)
