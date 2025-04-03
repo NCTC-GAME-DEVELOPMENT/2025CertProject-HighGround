@@ -6,11 +6,11 @@ using UnityEngine.InputSystem;
 // Player Number
 // #0 : Gamepad Input
 // #1 : Keyboard input :: WSAD + QEZC
-// #2 : Keyboard input :: IJKL + UON>
 
-public class InputPoller : Info
+public class InputPoller : MonoBehaviour
 {
     public static InputPoller Self;
+    Vector2 ScreenCenter = Vector2.zero;
 
     void Awake()
     {
@@ -22,21 +22,17 @@ public class InputPoller : Info
             Destroy(Self);
         }
         Self = this;
-        //DontDestroyOnLoad(gameObject);
-    }
 
-    // Update is called Self per frame
-    void Update()
-    {
-
+        ScreenCenter.x = Screen.width; 
+        ScreenCenter.y = Screen.height;
+        ScreenCenter *= .5f; 
     }
 
     public InputData GetInput(int PlayerNumber)
     {
         if (PlayerNumber == 0) { return GetInputP0(); }
         if (PlayerNumber == 1) { return GetInputP1(); }
-        if (PlayerNumber == 2) { return GetInputP2(); }
-
+      
         // Defaut return 
         return InputData.CleanDataStruct();
     }
@@ -81,8 +77,8 @@ public class InputPoller : Info
         {
             if (kb.wKey.isPressed) { input.leftStick.y = 1; }
             if (kb.sKey.isPressed) { input.leftStick.y = -1; }
-            if (kb.aKey.isPressed) { input.rightStick.x = -1; }
-            if (kb.dKey.isPressed) { input.rightStick.x = 1; }
+            if (kb.aKey.isPressed) { input.leftStick.x = -1; }
+            if (kb.dKey.isPressed) { input.leftStick.x = 1; }
 
             input.buttonNorth = kb.qKey.wasPressedThisFrame;
             input.buttonSouth = kb.eKey.wasPressedThisFrame;
@@ -90,27 +86,14 @@ public class InputPoller : Info
             input.buttonWest = kb.cKey.wasPressedThisFrame;
         }
 
-        return input;
-    }
+        // Emulate the right stick using the mouse
 
-    // this is the Keyboard and Mouse Info
-    public InputData GetInputP2()
-    {
-        InputData input = InputData.CleanDataStruct();
-
-        Keyboard kb = Keyboard.current;
-        // Verifiy we have Keyboard data 
-        if (kb != null)
+        Mouse mouse = Mouse.current; 
+        if (mouse != null) 
         {
-            if (kb.iKey.isPressed) { input.leftStick.y = 1; }
-            if (kb.kKey.isPressed) { input.leftStick.y = -1; }
-            if (kb.jKey.isPressed) { input.rightStick.x = -1; }
-            if (kb.lKey.isPressed) { input.rightStick.x = 1; }
+            Vector2 Mouselocation = mouse.position.ReadValue();
+            input.rightStick = (Mouselocation - ScreenCenter).normalized; 
 
-            input.buttonNorth = kb.uKey.wasPressedThisFrame;
-            input.buttonSouth = kb.oKey.wasPressedThisFrame;
-            input.buttonEast = kb.nKey.wasPressedThisFrame;
-            input.buttonWest = kb.periodKey.wasPressedThisFrame;
         }
 
         return input;

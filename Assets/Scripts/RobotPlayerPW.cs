@@ -1,69 +1,69 @@
+using JetBrains.Annotations;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.XR;
 
-public class RobotPlayerPW : PWPawn
+
+public class RobotPlayerPW : MonoBehaviour
 {
+    public int PlayerNumber = 1; 
     public GameObject RobotModel;
-    public Vector3 DeathRotation;
-    public bool RemoveAfterDeath = true;
-    public float RemoveAfterDeathTime = 5f;
     public GameObject ProjectileSpawnPoint;
     public float MoveSpeed = 20f;
     public float RotationSpeed = 180f;
+
    // public AudioClip someSound;
-   // AudioSource source;
-
+    AudioSource source;
     Rigidbody rb;
-
-    public static object Instance { get; internal set; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rb = GetComponentInParent<Rigidbody>();
-       // source = gameObject.AddComponent<AudioSource>();
+       rb = GetComponentInParent<Rigidbody>();
+       source = gameObject.AddComponent<AudioSource>();
     }
 
-    public override void Vertical(float value)
+    private void Update()
     {
-        if (!rb)
+        InputData input = InputPoller.Self.GetInput(PlayerNumber);
+
+        MovePlayer(input.leftStick);
+        LookandShoot(input.rightStick); 
+    }
+
+    public void MovePlayer(Vector2 value)
+    {
+        Vector3 moveVector = Vector3.zero; 
+        moveVector.x = value.x; 
+        moveVector.z = value.y;
+
+        rb.linearVelocity = moveVector.normalized * MoveSpeed;
+
+    }
+
+    public void LookandShoot(Vector2 value)
+    {
+        if(value.magnitude == 0)
         {
-            return;
+            return; 
         }
 
-        rb.linearVelocity = gameObject.transform.forward * value * MoveSpeed;
-    }
+        Vector3 lookVector = Vector3.zero;
+        lookVector.x = value.x;
+        lookVector.z = value.y; 
+         
+        gameObject.transform.forward = lookVector; 
 
-    public override void Horizontal(float value)
-    {
-        gameObject.transform.Rotate(Vector3.up * value * RotationSpeed * Time.deltaTime);
     }
-
-    public override void Fire(bool value)
+   
+    public void Fire(bool value)
     {
         if (value)
         {
-            Factory(CurrentProjectile, ProjectileSpawnPoint.transform.position, ProjectileSpawnPoint.transform.rotation, GetController());
+            //Factory(CurrentProjectile, ProjectileSpawnPoint.transform.position, ProjectileSpawnPoint.transform.rotation, GetController());
         }
     }
-    // the override above maybe subject to change...
-
-    public override void Swing(bool value)
+  
+    public void Swing(bool value)
     {
        // melee attack
-    }
-    // the override above maybe subject to change...
-
-    public override void DeathTest()
-    {
-        base.DeathTest();
-        IgnoresDamage = true;
-        controller.BecomeSpectator();
-        RobotModel.transform.localRotation = Quaternion.Euler(DeathRotation);
-        if (RemoveAfterDeath)
-        {
-            Destroy(gameObject, RemoveAfterDeathTime);
-        }
     }
 }
