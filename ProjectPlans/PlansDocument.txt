@@ -58,3 +58,4 @@ MAYBE / IF WE HAVE TIME:
 - Player Sprint
 - Ranged Enemies
 - Pick Ups (Both Ammo & Health) (Would Require Implementing a system for it)
+- Sneak Attack in patrol state
