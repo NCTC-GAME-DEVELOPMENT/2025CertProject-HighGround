@@ -1,16 +1,22 @@
 using UnityEngine;
 
-public class MainWeaponClass : MonoBehaviour
+public class RangeAttack : WeaponBase
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    protected override void ChildStart()
+    {
+       
+    }
+
+    protected override void ChildUpdate()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+
+
+    public override void PerformAttack()
     {
-        
+        Debug.Log("Range Attack - Perform Attack!"); 
     }
 }

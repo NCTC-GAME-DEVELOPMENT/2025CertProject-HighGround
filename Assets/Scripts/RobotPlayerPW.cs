@@ -9,6 +9,7 @@ public class RobotPlayerPW : MonoBehaviour
     public GameObject ProjectileSpawnPoint;
     public float MoveSpeed = 20f;
     public float RotationSpeed = 180f;
+    public float triggerActivateValue = .5f; 
 
    // public AudioClip someSound;
     AudioSource source;
@@ -26,11 +27,20 @@ public class RobotPlayerPW : MonoBehaviour
         InputData input = InputPoller.Self.GetInput(PlayerNumber);
 
         MovePlayer(input.leftStick);
-        LookandShoot(input.rightStick); 
+        LookandShoot(input.rightStick);
+        Fire(input.leftTrigger); 
+        Swing(input.rightTrigger);
     }
 
     public void MovePlayer(Vector2 value)
     {
+        if (value.magnitude == 0)
+        {
+            rb.linearVelocity = Vector3.zero; 
+            return;
+        }
+
+
         Vector3 moveVector = Vector3.zero; 
         moveVector.x = value.x; 
         moveVector.z = value.y;
@@ -52,16 +62,22 @@ public class RobotPlayerPW : MonoBehaviour
         gameObject.transform.forward = lookVector; 
     }
    
-    public void Fire(bool value)
+    public void Fire(float value)
     {
-        if (value)
+        if (value > triggerActivateValue)
         {
-            //Factory(CurrentProjectile, ProjectileSpawnPoint.transform.position, ProjectileSpawnPoint.transform.rotation, GetController());
+            Debug.Log("Fire - pew pew pew");
+
         }
     }
   
-    public void Swing(bool value)
+    public void Swing(float value)
     {
-       // melee attack
+        // melee attack
+        if (value > triggerActivateValue)
+        {
+            Debug.Log("Swing - swoosh!");
+
+        }
     }
 }

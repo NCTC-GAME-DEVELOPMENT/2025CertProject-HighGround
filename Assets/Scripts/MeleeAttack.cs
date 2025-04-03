@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MeleeAttack : MonoBehaviour
+public class MeleeAttack : WeaponBase
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
