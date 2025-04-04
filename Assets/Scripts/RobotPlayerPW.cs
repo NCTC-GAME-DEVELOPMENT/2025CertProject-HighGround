@@ -5,14 +5,18 @@ using UnityEngine;
 public class RobotPlayerPW : MonoBehaviour
 {
     public int PlayerNumber = 1; 
+
     public GameObject RobotModel;
+    public GameObject projectilePrefab;
     public GameObject ProjectileSpawnPoint;
+
     public float MoveSpeed = 20f;
     public float RotationSpeed = 180f;
     public float triggerActivateValue = .5f; 
 
    // public AudioClip someSound;
     AudioSource source;
+
     Rigidbody rb;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -67,7 +71,7 @@ public class RobotPlayerPW : MonoBehaviour
         if (value > triggerActivateValue)
         {
             Debug.Log("Fire - pew pew pew");
-
+            SpawnProjectile();
         }
     }
   
@@ -79,5 +83,10 @@ public class RobotPlayerPW : MonoBehaviour
             Debug.Log("Swing - swoosh!");
 
         }
+    }
+
+    void SpawnProjectile()
+    {
+        Instantiate(projectilePrefab, ProjectileSpawnPoint.transform.position, ProjectileSpawnPoint.transform.rotation);
     }
 }

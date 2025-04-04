@@ -718,7 +718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6500327062443855093, guid: ef716a9d3263b8f4e9a04b563a129a4c, type: 3}
       propertyPath: MoveSpeed
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6500327062443855093, guid: ef716a9d3263b8f4e9a04b563a129a4c, type: 3}
       propertyPath: RobotModel
@@ -728,6 +728,10 @@ PrefabInstance:
       propertyPath: PlayerNumber
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6500327062443855093, guid: ef716a9d3263b8f4e9a04b563a129a4c, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 3541427812091996248, guid: 3ec2139880ac4cc4e8d0eff11097a992, type: 3}
     - target: {fileID: 6500327062443855093, guid: ef716a9d3263b8f4e9a04b563a129a4c, type: 3}
       propertyPath: ProjectileSpawnPoint
       value: 
@@ -755,6 +759,10 @@ PrefabInstance:
     - target: {fileID: 6500327062443855093, guid: ef716a9d3263b8f4e9a04b563a129a4c, type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7184109225357681800, guid: ef716a9d3263b8f4e9a04b563a129a4c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7196497599989790711, guid: ef716a9d3263b8f4e9a04b563a129a4c, type: 3}
       propertyPath: m_LocalPosition.x
