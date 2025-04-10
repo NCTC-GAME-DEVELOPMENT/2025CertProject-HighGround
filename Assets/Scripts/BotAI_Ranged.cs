@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
-using static UnityEngine.GraphicsBuffer;
 
-public class GuardMelee : MonoBehaviour
+public class BotAI_Ranged : MonoBehaviour
 {
     public delegate void AgentState();
     AgentState currentState;
+
+    public bool IsActive = false; 
 
     public float timeLeft = 1;
 
@@ -16,7 +17,7 @@ public class GuardMelee : MonoBehaviour
 
     
     public Transform Player;
-    public Transform MousePointinWorld;
+
     public float Rotationspeed = 1.0f;
 
     bool SpaceBarInput = false;
@@ -35,16 +36,41 @@ public class GuardMelee : MonoBehaviour
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
         source = gameObject.AddComponent<AudioSource>();
-        EnterRoam();
+
+
+        if(IsActive)
+        {
+            EnableBot(); 
+        }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!IsActive)
+        {
+            // Bot isn't active
+            return;
+        }    
+
+        // To Be Removed
         GetInput();
 
         currentState?.Invoke();
 
+    }
+
+    public void EnableBot()
+    {
+        IsActive = true;
+
+        EnterRoam();
+    }
+
+    public void DisableBot()
+    {
+        IsActive = false; 
     }
 
     void GetInput()
