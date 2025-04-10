@@ -9,6 +9,7 @@ public class RobotPlayerPW : MonoBehaviour
     public GameObject RobotModel;
     public GameObject projectilePrefab;
     public GameObject ProjectileSpawnPoint;
+    public GameObject AttackRange;
 
     public float MoveSpeed = 20f;
     public float RotationSpeed = 180f;
@@ -71,6 +72,7 @@ public class RobotPlayerPW : MonoBehaviour
         if (value > triggerActivateValue)
         {
             Debug.Log("Fire - pew pew pew");
+
             SpawnProjectile();
         }
     }

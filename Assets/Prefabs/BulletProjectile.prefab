@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0de7700f1ef0cc4bb3060b347517fef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackRetrigerDelay: 0.5
+  AttackRetrigerDelay: 0.25
   damageAmount: 10
   movementSpeed: 35
-  lifetime: 2
+  lifetime: 1

@@ -36,10 +36,10 @@ public class RangeAttack : WeaponBase
     
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log(gameObject.name + " hit " + other.gameObject.name);
+        Debug.Log(gameObject.name + " hit " + other.gameObject.name); 
         Destroy(gameObject);
     }
-     
+
     /*
     public void OnDeath()
     {
