@@ -43,18 +43,19 @@ Settings: (TBD)
 --------
 PRIORITY LIST:
 
-1st. Player Movement
-2nd. Player Weapons
-3rd. Enemy Aggro
-4th. Enemy Attack/Weapon
-5th. Floor/Level Change
-6th. Audio
-7th. Main Menu & Credits
-8th. Settings
+1st. Player Movement (Karol - done)
+2nd. Player Weapons (Karol - ongoing)
+3rd. Enemy Aggro (Colter - ongoing)
+4th. Enemy Attack/Weapon (Colter - ongoing)
+5th. Floor/Level Change (Colter - not started)
+6th. Audio (Percy - ongoing)
+7th. Main Menu, HUD, & Credits (Percy - not started)
+8th. Settings (whoever gets to this first lol)
 
 ---------
 MAYBE / IF WE HAVE TIME:
 - Traps
+- Enemy Interactions
 - Player Sprint
 - Ranged Enemies
 - Pick Ups (Both Ammo & Health) (Would Require Implementing a system for it)
