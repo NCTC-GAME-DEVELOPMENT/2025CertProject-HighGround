@@ -97,6 +97,8 @@ public class BotAI_Ranged : MonoBehaviour
             NextTarget();
         }
 
+        // Rather than Spacebar input here. 
+        // There will be a new function to check if Bot has found the player... 
         if (SpaceBarInput)
         {
             EnterChase();
