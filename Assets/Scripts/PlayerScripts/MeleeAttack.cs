@@ -4,9 +4,10 @@ using UnityEngine;
 public class MeleeAttack : WeaponBase
 {
     public float attackRange = 2f;
+
     OnOffTriggerAttack attackOn;
     OnOffTriggerAttack attackOff;
-    OnTriggerAttack onAttack;
+    OnTriggerAttack oa;
 
 
     protected override void ChildStart()
@@ -23,7 +24,7 @@ public class MeleeAttack : WeaponBase
     {
         Debug.Log("Melee Attack - Perform Attack!");
 
-
+        oa.OnAttack();
 
     }
 }

@@ -4,12 +4,13 @@ using UnityEngine;
 public class RobotPlayerPW : MonoBehaviour
 {
     public static RobotPlayerPW instance;
+    MeleeAttack pa;
 
     public int PlayerNumber = 1; 
 
     public GameObject RobotModel;
     public GameObject projectilePrefab;
-    public GameObject ProjectileSpawnPoint;
+    public GameObject WeaponSpawnPoint;
     public GameObject AttackRange;
 
     public float MoveSpeed = 20f;
@@ -85,11 +86,12 @@ public class RobotPlayerPW : MonoBehaviour
         {
             Debug.Log("Swing - swoosh!");
 
+            //pa.PerformAttack();
         }
     }
 
     void SpawnProjectile()
     {
-        Instantiate(projectilePrefab, ProjectileSpawnPoint.transform.position, ProjectileSpawnPoint.transform.rotation);
+        Instantiate(projectilePrefab, WeaponSpawnPoint.transform.position, WeaponSpawnPoint.transform.rotation);
     }
 }

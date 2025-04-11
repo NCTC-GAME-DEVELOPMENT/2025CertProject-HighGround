@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class OnTriggerAttack : MonoBehaviour
 {
-
-
+    public WeaponBase attackTrigDelay;
+    public GameObject MetalPipe;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,6 +16,15 @@ public class OnTriggerAttack : MonoBehaviour
     {
         
     }
+
+    public void OnAttack()
+    {
+
+        Animator anim = MetalPipe.GetComponent<Animator>();
+        anim.SetTrigger("Attack");
+
+    }
+
 
 
     private void OnTriggerEnter(Collider other)

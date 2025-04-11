@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class OnOffTriggerAttack : MonoBehaviour
 {
-    bool attackIsOff;
-    bool attackIsOn;
+    public bool attackIsOff;
+    public bool attackIsOn;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
