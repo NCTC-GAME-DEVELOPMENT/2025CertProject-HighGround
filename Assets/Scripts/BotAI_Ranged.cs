@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
+using static DetectionScript;
+
 
 public class BotAI_Ranged : MonoBehaviour
 {
@@ -14,8 +16,8 @@ public class BotAI_Ranged : MonoBehaviour
     Transform currentTarget;
     NavMeshAgent agent;
 
+    public DetectionScript detect;
 
-    
     public Transform Player;
 
     public float Rotationspeed = 1.0f;
@@ -28,6 +30,7 @@ public class BotAI_Ranged : MonoBehaviour
     public Transform[] pathList;
     int pathListIndex = 0;
 
+    
 
 
 
@@ -99,10 +102,11 @@ public class BotAI_Ranged : MonoBehaviour
 
         // Rather than Spacebar input here. 
         // There will be a new function to check if Bot has found the player... 
-        if (SpaceBarInput)
+        if (detect.IsInView)
         {
             EnterChase();
         }
+
     }
 
     void EnterChase()
