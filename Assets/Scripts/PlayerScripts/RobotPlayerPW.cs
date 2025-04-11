@@ -1,9 +1,10 @@
-using JetBrains.Annotations;
+using Unity.VisualScripting;
 using UnityEngine;
-
 
 public class RobotPlayerPW : MonoBehaviour
 {
+    public static RobotPlayerPW instance;
+
     public int PlayerNumber = 1; 
 
     public GameObject RobotModel;
