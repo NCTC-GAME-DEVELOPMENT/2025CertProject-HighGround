@@ -68,7 +68,11 @@ public class DetectionScript : MonoBehaviour
                 IsInView = true;
                 
             }
-            
+            else
+            {
+                IsInView = false;
+            }
+            return;
         }
 
     }

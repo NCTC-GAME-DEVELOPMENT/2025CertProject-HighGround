@@ -11,7 +11,8 @@ public class BotAI_Ranged : MonoBehaviour
 
     public bool IsActive = false; 
 
-    public float timeLeft = 1;
+    public float timeLeft = .3f;
+    public float delay = 1f;
 
     Transform currentTarget;
     NavMeshAgent agent;
@@ -19,7 +20,11 @@ public class BotAI_Ranged : MonoBehaviour
     public DetectionScript detect;
 
     public Transform Player;
+    public GameObject projectilePrefab;
+    public GameObject WeaponSpawnPoint;
+    public GameObject AttackRange;
 
+    public float triggerActivateValue = .5f;
     public float Rotationspeed = 1.0f;
 
     bool SpaceBarInput = false;
@@ -55,12 +60,14 @@ public class BotAI_Ranged : MonoBehaviour
         {
             // Bot isn't active
             return;
-        }    
+        }
 
-        // To Be Removed
         GetInput();
+        {
+            currentState?.Invoke();
 
-        currentState?.Invoke();
+        }
+        
 
     }
 
@@ -134,7 +141,7 @@ public class BotAI_Ranged : MonoBehaviour
         {
             agent.destination = currentTarget.position;
 
-            timeLeft += 1;
+            timeLeft += .3f;
   
         }
 
@@ -143,13 +150,12 @@ public class BotAI_Ranged : MonoBehaviour
         float singleStep = Rotationspeed * Time.deltaTime;
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
         transform.rotation = Quaternion.LookRotation(newDirection);
-
-
-        if (agent.isStopped)
+        
+        if (detect.IsInView)
         {
-            // Attack Player 
-            // You will need a timer to make sure not to spam attacks. 
+            Fire();
         }
+
 
 
 
@@ -183,6 +189,30 @@ public class BotAI_Ranged : MonoBehaviour
 
         currentTarget = pathList[pathListIndex];
         agent.destination = currentTarget.position;
+    }
+
+    public void Fire()
+    {
+        if (delay > 1f)
+        {
+            delay -= Time.deltaTime;
+        }
+        else
+        {
+            Debug.Log("BOT HAS FIRED");
+            SpawnProjectile();
+
+            delay += 1f;
+
+        }
+
+        
+            
+    }
+
+    void SpawnProjectile()
+    {
+        Instantiate(projectilePrefab, WeaponSpawnPoint.transform.position, WeaponSpawnPoint.transform.rotation);
     }
 
 
