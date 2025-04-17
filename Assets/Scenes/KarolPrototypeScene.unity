@@ -425,6 +425,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5280946862156262281, guid: ef716a9d3263b8f4e9a04b563a129a4c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5904414745906875577, guid: ef716a9d3263b8f4e9a04b563a129a4c, type: 3}
       propertyPath: m_Name
       value: PlayerRobot
@@ -433,6 +437,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeaponSpawnPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 6500327062443855093, guid: ef716a9d3263b8f4e9a04b563a129a4c, type: 3}
+      propertyPath: pa
+      value: 
+      objectReference: {fileID: 8837441282535228385}
     - target: {fileID: 6500327062443855093, guid: ef716a9d3263b8f4e9a04b563a129a4c, type: 3}
       propertyPath: WeaponSpawnPoint
       value: 
@@ -872,6 +880,7 @@ GameObject:
   - component: {fileID: 5577263151669949263}
   - component: {fileID: 960354649004790382}
   - component: {fileID: 8837441282535228384}
+  - component: {fileID: 8837441282535228385}
   m_Layer: 0
   m_Name: MetalPipe
   m_TagString: Untagged
@@ -901,6 +910,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8837441282535228385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8837441282535228383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27ae456d4086cdd49b12ccf465df3d5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackRetrigerDelay: 0.25
+  attackRange: 2
+  MetalPipe: {fileID: 8837441282535228383}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
