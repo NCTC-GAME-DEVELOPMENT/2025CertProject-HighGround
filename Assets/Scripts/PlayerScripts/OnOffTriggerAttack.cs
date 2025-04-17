@@ -4,6 +4,7 @@ public class OnOffTriggerAttack : MonoBehaviour
 {
     public bool attackIsOff;
     public bool attackIsOn;
+    WeaponBase delay;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

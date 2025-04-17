@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class OnTriggerAttack : MonoBehaviour
 {
-    public WeaponBase attackTrigDelay;
+    WeaponBase attackTrigDelay;
     public GameObject MetalPipe;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

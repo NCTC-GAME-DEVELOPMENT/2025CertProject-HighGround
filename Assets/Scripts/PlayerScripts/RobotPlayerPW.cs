@@ -4,7 +4,7 @@ using UnityEngine;
 public class RobotPlayerPW : MonoBehaviour
 {
     public static RobotPlayerPW instance;
-    MeleeAttack pa;
+    public MeleeAttack pa;
 
     public int PlayerNumber = 1; 
 
@@ -86,7 +86,7 @@ public class RobotPlayerPW : MonoBehaviour
         {
             Debug.Log("Swing - swoosh!");
 
-            //pa.PerformAttack();
+            pa.PerformAttack();
         }
     }
 

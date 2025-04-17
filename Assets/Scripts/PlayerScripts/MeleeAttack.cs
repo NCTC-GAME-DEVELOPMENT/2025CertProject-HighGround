@@ -4,9 +4,7 @@ using UnityEngine;
 public class MeleeAttack : WeaponBase
 {
     public float attackRange = 2f;
-
-    OnOffTriggerAttack attackOn;
-    OnOffTriggerAttack attackOff;
+    public GameObject MetalPipe;
     OnTriggerAttack oa;
 
 
@@ -24,7 +22,9 @@ public class MeleeAttack : WeaponBase
     {
         Debug.Log("Melee Attack - Perform Attack!");
 
-        oa.OnAttack();
+        Animator anim = MetalPipe.GetComponent<Animator>();
+        anim.SetTrigger("Attack");
+        //oa.OnAttack();
 
     }
 }
