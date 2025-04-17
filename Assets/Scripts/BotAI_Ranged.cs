@@ -4,14 +4,14 @@ using UnityEngine.InputSystem;
 using static DetectionScript;
 
 
-public class BotAI_Ranged : MonoBehaviour
+public class BotAI_Ranged : BotBase
 {
     public delegate void AgentState();
     AgentState currentState;
 
     public bool IsActive = false; 
 
-    public float timeLeft = .3f;
+    public float TrackPlayerTimer = .3f;
     public float delay = 1f;
 
     Transform currentTarget;
@@ -20,14 +20,13 @@ public class BotAI_Ranged : MonoBehaviour
     public DetectionScript detect;
 
     public Transform Player;
+    public Transform InvestigatePoint; 
     public GameObject projectilePrefab;
     public GameObject WeaponSpawnPoint;
     public GameObject AttackRange;
 
     public float triggerActivateValue = .5f;
     public float Rotationspeed = 1.0f;
-
-    bool SpaceBarInput = false;
 
     AudioSource source;
 
@@ -62,13 +61,7 @@ public class BotAI_Ranged : MonoBehaviour
             return;
         }
 
-        GetInput();
-        {
-            currentState?.Invoke();
-
-        }
-        
-
+        currentState?.Invoke();
     }
 
     public void EnableBot()
@@ -83,14 +76,22 @@ public class BotAI_Ranged : MonoBehaviour
         IsActive = false; 
     }
 
-    void GetInput()
+
+    public override void OnPlayerCollision()
     {
-        Keyboard kb = Keyboard.current;
-        if (kb != null)
-        {
-            SpaceBarInput = kb.spaceKey.wasPressedThisFrame;
-        }
+        //Debug.Log("AIB-R Player Collision"); 
+
+        // Face the player! 
+
+        Vector3 targetDirection = Player.position - transform.position;
+        float quickTurn = Rotationspeed * Time.deltaTime;
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, quickTurn, 0.0f);
+        transform.rotation = Quaternion.LookRotation(newDirection);
+
+        EnterChase(); 
+
     }
+
 
     void EnterRoam()
     {
@@ -133,15 +134,24 @@ public class BotAI_Ranged : MonoBehaviour
     void DoChase()
     {
        
-        if (timeLeft > 0f)
+        if (TrackPlayerTimer > 0f)
         {
-            timeLeft -= Time.deltaTime;
+            TrackPlayerTimer -= Time.deltaTime;
         }
         else
         {
+            if(!detect.IsInView) 
+            {
+                // WE've lost view of the player
+                EnterInvesigate();
+                return; 
+            
+            }
+
+
             agent.destination = currentTarget.position;
 
-            timeLeft += .3f;
+            TrackPlayerTimer += .3f;
   
         }
 
@@ -160,6 +170,40 @@ public class BotAI_Ranged : MonoBehaviour
 
 
     }
+
+    public void EnterInvesigate()
+    {
+        
+        currentState = DoInvestigate;
+        InvestigatePoint.position = Player.position;
+        currentTarget = InvestigatePoint; 
+
+        agent.destination = currentTarget.position;
+
+        agent.stoppingDistance = withInRange;
+    }
+
+    public void DoInvestigate()
+    {
+
+
+        if (detect.IsInView)
+        {
+            // Find the player again, chase after them! 
+            EnterChase();
+        }
+
+        if ( IsCloseToTarget())
+        {
+            // We've lost track of the player 
+            // Go back to Roaming 
+
+            EnterRoam();
+
+        }
+
+    }
+
 
     public float GetDistanceTo(Transform Other)
     {
