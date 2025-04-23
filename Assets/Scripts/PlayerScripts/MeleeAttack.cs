@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class MeleeAttack : WeaponBase
 {
+    public float damageAmount = 50.0f;
     public float attackRange = 2f;
     public GameObject MetalPipe;
     OnTriggerAttack oa;
-
+      
 
     protected override void ChildStart()
     {
@@ -26,6 +27,11 @@ public class MeleeAttack : WeaponBase
         anim.SetTrigger("Attack");
         //oa.OnAttack();
 
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        
     }
 }
 

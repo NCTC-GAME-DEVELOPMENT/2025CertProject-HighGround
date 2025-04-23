@@ -5,7 +5,7 @@ using static UnityEngine.UI.GridLayoutGroup;
 
 public class RangeAttack : WeaponBase
 {
-    public float damageAmount = 10.0f;
+    public float damageAmount = 25.0f;
     public float movementSpeed = 20f;
     public float lifetime = 2f;
 
@@ -36,7 +36,8 @@ public class RangeAttack : WeaponBase
     
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log(gameObject.name + " hit " + other.gameObject.name); 
+        Debug.Log(gameObject.name + " hit " + other.gameObject.name);
+        //TakeDamage(damageAmount);
         Destroy(gameObject);
     }
 
