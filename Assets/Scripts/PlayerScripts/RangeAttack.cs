@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.UI.GridLayoutGroup;
 
 public class RangeAttack : WeaponBase
 {
+    public Actor Owner; 
     public float damageAmount = 25.0f;
     public float movementSpeed = 20f;
     public float lifetime = 2f;
+    Collider attackCollider; 
+  
 
     protected Rigidbody rb;
 
     protected override void ChildStart()
     {
+        attackCollider = GetComponent<Collider>();
         rb = gameObject.AddComponent<Rigidbody>();
         rb.linearVelocity = transform.forward * movementSpeed;
         rb.useGravity = false;
@@ -21,7 +24,7 @@ public class RangeAttack : WeaponBase
 
     protected override void ChildUpdate()
     {
-        
+        attackCollider.enabled = true; 
     }
 
 
@@ -37,7 +40,12 @@ public class RangeAttack : WeaponBase
     void OnTriggerEnter(Collider other)
     {
         Debug.Log(gameObject.name + " hit " + other.gameObject.name);
-        //TakeDamage(damageAmount);
+        HealthSystem hs = other.GetComponentInParent<HealthSystem>();
+        if (hs)
+        {
+            hs.TakeDamage(damageAmount);
+        }
+        
         Destroy(gameObject);
     }
 

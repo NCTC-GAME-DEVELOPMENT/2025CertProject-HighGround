@@ -1,10 +1,10 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class RobotPlayerPW : MonoBehaviour
+public class RobotPlayerPW : Actor
 {
     public static RobotPlayerPW instance;
-    public MeleeAttack pa;
+    public MeleeAttack metalpipe;
 
     public int PlayerNumber = 1; 
 
@@ -86,12 +86,14 @@ public class RobotPlayerPW : MonoBehaviour
         {
             Debug.Log("Swing - swoosh!");
 
-            pa.PerformAttack();
+            metalpipe.PerformAttack();
         }
     }
 
     void SpawnProjectile()
     {
-        Instantiate(projectilePrefab, WeaponSpawnPoint.transform.position, WeaponSpawnPoint.transform.rotation);
+        GameObject go = Instantiate(projectilePrefab, WeaponSpawnPoint.transform.position, WeaponSpawnPoint.transform.rotation);
+        RangeAttack rangedAttack = go.GetComponent<RangeAttack>();
+        rangedAttack.Owner = this; 
     }
 }

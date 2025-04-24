@@ -94,8 +94,8 @@ public class InputPoller : MonoBehaviour
             Vector2 Mouselocation = mouse.position.ReadValue();
             input.rightStick = (Mouselocation - ScreenCenter).normalized;
 
-            if (mouse.leftButton.isPressed) { input.rightTrigger = 1.0f; }
-            if (mouse.rightButton.isPressed) { input.leftTrigger = 1.0f; }
+            if (mouse.leftButton.wasPressedThisFrame) { input.rightTrigger = 1.0f; }
+            if (mouse.rightButton.wasPressedThisFrame) { input.leftTrigger = 1.0f; }
 
         }
 
