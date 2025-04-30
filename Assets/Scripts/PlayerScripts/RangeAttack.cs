@@ -10,7 +10,6 @@ public class RangeAttack : WeaponBase
     public float lifetime = 2f;
     Collider attackCollider; 
   
-
     protected Rigidbody rb;
 
     protected override void ChildStart()
@@ -27,15 +26,10 @@ public class RangeAttack : WeaponBase
         attackCollider.enabled = true; 
     }
 
-
-
     public override void PerformAttack()
     {
         Debug.Log("Range Attack - Perform Attack!"); 
-
-
     }
-
     
     void OnTriggerEnter(Collider other)
     {
@@ -48,11 +42,4 @@ public class RangeAttack : WeaponBase
         
         Destroy(gameObject);
     }
-
-    /*
-    public void OnDeath()
-    {
-        Destroy(gameObject);
-    }
-    */
 }

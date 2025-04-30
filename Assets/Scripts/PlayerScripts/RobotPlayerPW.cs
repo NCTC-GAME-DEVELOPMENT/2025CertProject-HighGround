@@ -11,7 +11,6 @@ public class RobotPlayerPW : Actor
     public GameObject RobotModel;
     public GameObject projectilePrefab;
     public GameObject WeaponSpawnPoint;
-    public GameObject AttackRange;
 
     public float MoveSpeed = 20f;
     public float RotationSpeed = 180f;

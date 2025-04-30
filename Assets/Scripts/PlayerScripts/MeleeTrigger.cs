@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class MeleeTrigger : MonoBehaviour
 {
-
     public Actor Owner; 
     public MeleeAttack attack;
 

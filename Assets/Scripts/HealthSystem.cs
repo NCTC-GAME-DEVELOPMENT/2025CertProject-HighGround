@@ -10,8 +10,6 @@ public class HealthSystem : MonoBehaviour
     public UnityEvent OnDeath;
     public UnityEvent OnTakeDamage;
 
-
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -36,7 +34,6 @@ public class HealthSystem : MonoBehaviour
         OnTakeDamage?.Invoke(); 
     }
 
-
     public void TakeDamage(Actor Instigator, float damageValue)
     {
         if (Instigator == Owner)
@@ -57,8 +54,6 @@ public class HealthSystem : MonoBehaviour
         OnTakeDamage?.Invoke();
     }
 
-
-
     public void onDamagedTest()
     {
         Debug.Log(gameObject.name + " has been damaged");
@@ -75,13 +70,4 @@ public class HealthSystem : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
-
-
-
-
-
-
-
-
 }
