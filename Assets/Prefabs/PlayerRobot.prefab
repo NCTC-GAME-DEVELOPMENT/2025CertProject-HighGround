@@ -209,6 +209,12 @@ MonoBehaviour:
   MoveSpeed: 7
   RotationSpeed: 180
   triggerActivateValue: 0.5
+  rangeAtkSound: {fileID: 8300000, guid: 9946a592a340f7d499448717f815ec40, type: 3}
+  meleeAtkSound: {fileID: 8300000, guid: 9403b5d064a976c4cbcb59b201ee37d6, type: 3}
+  volumeMin: 0.7
+  volumeMax: 1
+  pitchMin: 0.85
+  pitchMax: 1.15
 --- !u!114 &8909572801917275796
 MonoBehaviour:
   m_ObjectHideFlags: 0

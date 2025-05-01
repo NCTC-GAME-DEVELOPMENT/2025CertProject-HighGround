@@ -16,8 +16,14 @@ public class RobotPlayerPW : Actor
     public float RotationSpeed = 180f;
     public float triggerActivateValue = .5f; 
 
-   // public AudioClip someSound;
     AudioSource source;
+    public AudioClip rangeAtkSound;
+    public AudioClip meleeAtkSound;
+
+    public float volumeMin = .7f;
+    public float volumeMax = 1.0f;
+    public float pitchMin = .85f;
+    public float pitchMax = 1.15f;
 
     Rigidbody rb;
 
@@ -46,7 +52,6 @@ public class RobotPlayerPW : Actor
             return;
         }
 
-
         Vector3 moveVector = Vector3.zero; 
         moveVector.x = value.x; 
         moveVector.z = value.y;
@@ -67,12 +72,25 @@ public class RobotPlayerPW : Actor
          
         gameObject.transform.forward = lookVector; 
     }
-   
+
+    public void PlayWithVariance(AudioClip clip)
+    {
+        // volume range 
+        float clipVolume = Random.Range(volumeMin, volumeMax);
+        // pitch range 
+        float clipPitch = Random.Range(pitchMin, pitchMax);
+
+        source.volume = clipVolume;
+        source.pitch = clipPitch;
+        source.PlayOneShot(clip);
+    }
+
     public void Fire(float value)
     {
         if (value > triggerActivateValue)
         {
             Debug.Log("Fire - pew pew pew");
+            PlayWithVariance(rangeAtkSound);
 
             SpawnProjectile();
         }
@@ -84,6 +102,7 @@ public class RobotPlayerPW : Actor
         if (value > triggerActivateValue)
         {
             Debug.Log("Swing - swoosh!");
+            PlayWithVariance(meleeAtkSound);
 
             metalpipe.PerformAttack();
         }

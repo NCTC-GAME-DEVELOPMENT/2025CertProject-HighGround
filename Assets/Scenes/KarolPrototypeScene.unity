@@ -1337,6 +1337,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 287073597678777835, guid: ef716a9d3263b8f4e9a04b563a129a4c, type: 3}
+      propertyPath: meleeAtkSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 9403b5d064a976c4cbcb59b201ee37d6, type: 3}
+    - target: {fileID: 287073597678777835, guid: ef716a9d3263b8f4e9a04b563a129a4c, type: 3}
+      propertyPath: rangeAtkSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 9946a592a340f7d499448717f815ec40, type: 3}
     - target: {fileID: 3138942965252632212, guid: ef716a9d3263b8f4e9a04b563a129a4c, type: 3}
       propertyPath: m_Name
       value: PlayerRobot
