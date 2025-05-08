@@ -6,7 +6,6 @@ public class WeaponBase : MonoBehaviour
     public float AttackRetrigerDelay = .25f;
     float AttackRetriggerCounter = 0; 
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         ChildStart(); 
@@ -17,10 +16,8 @@ public class WeaponBase : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
         if (AttackRetriggerCounter > 0)
         {
             AttackRetriggerCounter -= Time.deltaTime; 
