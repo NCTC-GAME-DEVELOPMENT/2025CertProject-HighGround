@@ -194,6 +194,12 @@ MonoBehaviour:
   InvestigatePoint: {fileID: 0}
   triggerActivateValue: 0.5
   Rotationspeed: 1
+  meleeAtkSound: {fileID: 8300000, guid: 9403b5d064a976c4cbcb59b201ee37d6, type: 3}
+  detectionSound: {fileID: 8300000, guid: 19623389f8e899345b28eb5f55d4226f, type: 3}
+  volumeMin: 0.7
+  volumeMax: 1
+  pitchMin: 0.85
+  pitchMax: 1.15
   withInRange: 1.5
   pathList:
   - {fileID: 0}

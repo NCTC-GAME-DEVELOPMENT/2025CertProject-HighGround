@@ -388,6 +388,12 @@ MonoBehaviour:
   AttackRange: {fileID: 0}
   triggerActivateValue: 3
   Rotationspeed: 2
+  rangeAtkSound: {fileID: 8300000, guid: 9946a592a340f7d499448717f815ec40, type: 3}
+  detectionSound: {fileID: 8300000, guid: 19623389f8e899345b28eb5f55d4226f, type: 3}
+  volumeMin: 0.7
+  volumeMax: 1
+  pitchMin: 0.85
+  pitchMax: 1.15
   withInRange: 1.5
   pathList:
   - {fileID: 0}

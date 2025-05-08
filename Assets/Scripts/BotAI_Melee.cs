@@ -27,8 +27,8 @@ public class BotAI_Melee : BotBase
     public float Rotationspeed = 3.0f;
 
     AudioSource source;
-    public AudioClip rangeAtkSound;
     public AudioClip meleeAtkSound;
+    public AudioClip detectionSound;
 
     public float volumeMin = .7f;
     public float volumeMax = 1.0f;
@@ -136,7 +136,7 @@ public class BotAI_Melee : BotBase
     {
         Debug.Log("Entered Chase");
         currentState = DoChase;
-
+        PlayWithVariance(detectionSound);
 
         currentTarget = Player;
 
@@ -259,6 +259,7 @@ public class BotAI_Melee : BotBase
         else
         {
             Debug.Log("BOT HAS SWUNG");
+            PlayWithVariance(meleeAtkSound);
             metalpipe.PerformAttack();
 
             delay += 1f;
