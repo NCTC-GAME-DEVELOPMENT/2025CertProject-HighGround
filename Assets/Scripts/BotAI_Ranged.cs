@@ -30,7 +30,7 @@ public class BotAI_Ranged : BotBase
 
     AudioSource source;
     public AudioClip rangeAtkSound;
-    public AudioClip meleeAtkSound;
+    public AudioClip detectionSound;
 
     public float volumeMin = .7f;
     public float volumeMax = 1.0f;
@@ -40,18 +40,6 @@ public class BotAI_Ranged : BotBase
     public float withInRange = .25f;
     public Transform[] pathList;
     int pathListIndex = 0;
-
-    public void PlayWithVariance(AudioClip clip)
-    {
-        // volume range 
-        float clipVolume = Random.Range(volumeMin, volumeMax);
-        // pitch range 
-        float clipPitch = Random.Range(pitchMin, pitchMax);
-
-        source.volume = clipVolume;
-        source.pitch = clipPitch;
-        source.PlayOneShot(clip);
-    }
 
 
 
@@ -79,6 +67,18 @@ public class BotAI_Ranged : BotBase
         }
 
         currentState?.Invoke();
+    }
+
+    public void PlayWithVariance(AudioClip clip)
+    {
+        // volume range 
+        float clipVolume = Random.Range(volumeMin, volumeMax);
+        // pitch range 
+        float clipPitch = Random.Range(pitchMin, pitchMax);
+
+        source.volume = clipVolume;
+        source.pitch = clipPitch;
+        source.PlayOneShot(clip);
     }
 
     public void EnableBot()
@@ -138,8 +138,9 @@ public class BotAI_Ranged : BotBase
     {
         Debug.Log("Entered Chase");
         currentState = DoChase;
-        
-        
+        PlayWithVariance(detectionSound);
+
+
         currentTarget = Player;
         
         agent.destination = currentTarget.position;
@@ -261,6 +262,7 @@ public class BotAI_Ranged : BotBase
         else
         {
             Debug.Log("BOT HAS FIRED");
+            PlayWithVariance(rangeAtkSound);
             SpawnProjectile();
 
             delay += 1f;
