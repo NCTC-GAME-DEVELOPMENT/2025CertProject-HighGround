@@ -27,6 +27,13 @@ public class BotAI_Melee : BotBase
     public float Rotationspeed = 3.0f;
 
     AudioSource source;
+    public AudioClip rangeAtkSound;
+    public AudioClip meleeAtkSound;
+
+    public float volumeMin = .7f;
+    public float volumeMax = 1.0f;
+    public float pitchMin = .85f;
+    public float pitchMax = 1.15f;
 
     public float withInRange = .25f;
     public Transform[] pathList;
@@ -74,7 +81,17 @@ public class BotAI_Melee : BotBase
         IsActive = false;
     }
 
+    public void PlayWithVariance(AudioClip clip)
+    {
+        // volume range 
+        float clipVolume = Random.Range(volumeMin, volumeMax);
+        // pitch range 
+        float clipPitch = Random.Range(pitchMin, pitchMax);
 
+        source.volume = clipVolume;
+        source.pitch = clipPitch;
+        source.PlayOneShot(clip);
+    }
     public override void OnPlayerCollision()
     {
         //Debug.Log("AIB-R Player Collision"); 
