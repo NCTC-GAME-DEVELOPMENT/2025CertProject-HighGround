@@ -48,9 +48,9 @@ public class BotAI_Ranged : BotBase
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
         source = gameObject.AddComponent<AudioSource>();
+        Player = RobotPlayerPW.instance.gameObject.transform; 
 
-
-        if(IsActive)
+        if (IsActive)
         {
             EnableBot(); 
         }
@@ -100,10 +100,12 @@ public class BotAI_Ranged : BotBase
 
         // Face the player! 
 
-        Vector3 targetDirection = Player.position - transform.position;
-        float quickTurn = Rotationspeed * Time.deltaTime;
-        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, quickTurn, 0.0f);
-        transform.rotation = Quaternion.LookRotation(newDirection);
+        Vector3 targetDirection = Player.position - gameObject.transform.position;
+        //float quickTurn = Rotationspeed * Time.deltaTime;
+        //Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, quickTurn, 0.0f);
+        //transform.rotation = Quaternion.LookRotation(newDirection);
+
+        gameObject.transform.forward = targetDirection; 
 
         EnterChase(); 
 

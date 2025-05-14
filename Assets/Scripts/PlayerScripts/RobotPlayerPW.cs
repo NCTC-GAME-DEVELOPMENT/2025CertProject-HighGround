@@ -27,6 +27,12 @@ public class RobotPlayerPW : Actor
 
     Rigidbody rb;
 
+    private void Awake()
+    {
+        // lazy Singleton
+        instance = this;
+    }
+
     void Start()
     {
        rb = GetComponentInParent<Rigidbody>();
