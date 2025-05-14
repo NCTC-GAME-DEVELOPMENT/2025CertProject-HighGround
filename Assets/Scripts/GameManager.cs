@@ -7,6 +7,13 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        if (self != null)
+        {
+            string message = self.gameObject.name + " is already loaded, deleting excess instance";
+            Debug.Log(message);
+
+            Destroy(self);
+        }
         self = this;
     }
 }

@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
+using static UnityEngine.InputSystem.LowLevel.InputStateHistory;
 
 public class HealthSystem : MonoBehaviour
 {
@@ -64,5 +66,10 @@ public class HealthSystem : MonoBehaviour
     public void KillObject()
     {
         Destroy(gameObject);
+    }
+
+    public void RetryLevel()
+    {
+      
     }
 }
