@@ -1,6 +1,4 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.InputSystem.LowLevel.InputStateHistory;
 using UnityEngine.SceneManagement;
 
 public class RobotPlayerPW : Actor
