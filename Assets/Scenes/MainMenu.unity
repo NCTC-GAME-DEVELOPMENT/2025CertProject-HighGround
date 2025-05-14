@@ -2079,7 +2079,6 @@ MonoBehaviour:
   MainMenuPanel: {fileID: 2096134197}
   LevelPanel: {fileID: 496463065}
   ReloadPanel: {fileID: 729459092}
-  ExitButton: {fileID: 1028233247}
 --- !u!4 &1349465026 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5173174341283670346, guid: 6e4aec0a5ce507d4882a0eddc70477fd, type: 3}

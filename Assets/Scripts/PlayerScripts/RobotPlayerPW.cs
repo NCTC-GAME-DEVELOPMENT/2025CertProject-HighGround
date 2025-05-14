@@ -1,5 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.InputSystem.LowLevel.InputStateHistory;
+using UnityEngine.SceneManagement;
 
 public class RobotPlayerPW : Actor
 {
@@ -24,6 +26,8 @@ public class RobotPlayerPW : Actor
     public float volumeMax = 1.0f;
     public float pitchMin = .85f;
     public float pitchMax = 1.15f;
+
+    public string loadLevel = "Reload";
 
     Rigidbody rb;
 
@@ -117,6 +121,12 @@ public class RobotPlayerPW : Actor
     {
         GameObject go = Instantiate(projectilePrefab, WeaponSpawnPoint.transform.position, WeaponSpawnPoint.transform.rotation);
         RangeAttack rangedAttack = go.GetComponent<RangeAttack>();
-        rangedAttack.Owner = this; 
+        rangedAttack.Owner = this;
+    }
+
+    public void LoadGameOver()
+    {
+        // do scene switch here. 
+        SceneManager.LoadScene(loadLevel);
     }
 }
