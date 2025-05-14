@@ -7974,6 +7974,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1045648692}
   - component: {fileID: 1045648693}
+  - component: {fileID: 1045648694}
   m_Layer: 0
   m_Name: Goal Trigger
   m_TagString: Untagged
@@ -8017,6 +8018,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1045648694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045648691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54ae6adacabfdde45b118696fa0a20d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1049060260 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 383529331404312108, guid: 82942923186e0e6498aa4c61fefb09d6, type: 3}
@@ -14896,7 +14909,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 383529331404312108, guid: 82942923186e0e6498aa4c61fefb09d6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 23.166718
+      value: 19.77
       objectReference: {fileID: 0}
     - target: {fileID: 383529331404312108, guid: 82942923186e0e6498aa4c61fefb09d6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -15858,7 +15871,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1729096619210490172, guid: 7f6a52a2824b7d6449bebcc01b5d9eb9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 25.618755
+      value: 22.222038
       objectReference: {fileID: 0}
     - target: {fileID: 1729096619210490172, guid: 7f6a52a2824b7d6449bebcc01b5d9eb9, type: 3}
       propertyPath: m_LocalRotation.w
